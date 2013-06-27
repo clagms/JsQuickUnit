@@ -10,7 +10,7 @@ var testBasicValues = function() {
 	
 	var fs = new FileSystem();
 	
-	a.equal(JSON.stringify(JSON.parse(fs.readFile("./samples/src/sampleInc.json")), null, 4), fs.readFile("./samples/src/sampleInc.json"));
+	a.equal(JSON.stringify(JSON.parse(fs.readFile("./samples/src/inc.json")), null, 4), fs.readFile("./samples/src/inc.json"));
 	
 };
 

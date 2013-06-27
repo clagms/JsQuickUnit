@@ -18,8 +18,8 @@ var testFileSystemExists = function() {
 
 var testFileSystemBasic = function() {
 	var fs = new FileSystem();
-	var codeast1 = fs.readFile("./samples/src/sampleInc.js");
-	var codeast2 = fs.readFile("./samples/src/sampleInc.js");
+	var codeast1 = fs.readFile("./samples/src/inc.js");
+	var codeast2 = fs.readFile("./samples/src/inc.js");
 	
 	a(codeast1);
 	a(codeast2);

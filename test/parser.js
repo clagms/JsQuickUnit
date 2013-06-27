@@ -22,8 +22,8 @@ var testParserExists = function() {
 var testParserBasic = function() {
 	var fs = new FileSystem();
 	var parser = new Parser();
-	var codeast1 = fs.readFile("./samples/src/sampleInc.js");
-	var expectedJson = JSON.parse(fs.readFile("./samples/src/sampleInc.json"));
+	var codeast1 = fs.readFile("./samples/src/inc.js");
+	var expectedJson = JSON.parse(fs.readFile("./samples/src/inc.json"));
 	var actast1 = parser.parse(codeast1);
 	
 	a(actast1);
