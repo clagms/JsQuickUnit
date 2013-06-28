@@ -1,6 +1,8 @@
 var a = require('assert');
 var fileSystem = require('../src/file-system.js');
 
+var _ = require('underscore');
+
 var testBasicValues = function() {
 	a(!undefined);
 	a(!!!undefined);
@@ -17,7 +19,13 @@ var testBasicValues = function() {
 	
 };
 
+var testUnderscoreStuff = function() {
+	
+	
+};
+
 exports.run = function() {
 	testBasicValues();
+	testUnderscoreStuff();
 };
 

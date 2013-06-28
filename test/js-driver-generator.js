@@ -32,7 +32,7 @@ var testTransform = function() {
 	var codeString = fs.readFile("./samples/src/inc.js");
 	var codeAST = parserInstance.parse(codeString);
 	
-	generator.generateTestCodeAST(codeAST);
+	var code = generator.generateTestCodeAST(codeAST);
 	
 };
 

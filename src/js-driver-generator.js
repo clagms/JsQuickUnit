@@ -1,64 +1,82 @@
 /*
  * Responsible for performing the ast generation.
  */
-var jsDriverGenerator = function(abstGenerator) {
-
-	var l = require('../src/logger.js').get('JsDriverGenerator');
-
-	if (!abstGenerator) {
-		var abstractGeneratorFactory = require("../src/abstract-generator.js");
-		this.abstractGenerator = abstractGeneratorFactory();
-	} else {
-		this.abstractGenerator = abstGenerator;
-	}
+var jsDriverGenerator = function(spec) {
 	
-	var astWalkerFactory = require('../src/ast-walker.js');
+	var _ = require('underscore');
+	
+	var spec = spec || {};
+	
+	var that = {};
+	
+	var l = require('../src/logger.js').get('JsDriverGenerator');
+	
+	if (!spec.abstGenerator) {
+		var abstractGeneratorFactory = require("../src/abstract-generator.js");
+		that.abstractGenerator = abstractGeneratorFactory();
+	} else {
+		that.abstractGenerator = spec.abstGenerator();
+	}
 
 	var generateTestCodeAST = function(sourceCodeAst) {
 		l.info("Generating test code...");
 
 		l.debug("\n" + JSON.stringify(sourceCodeAst, null, 4));
-
+		
 		var visitor = jsDriverGeneratorVisitor();
+		
+		var code = visitor.genCode(sourceCodeAst);
 
-		var walker = astWalkerFactory(visitor.callback);
-
-		sourceCodeAst.walk(walker);
-
-		l.info("Generating test code...");
+		l.info("Generating test code... OK");
+		
+		l.debug(code);
+		
+		return code;
 	};
+	
+	
 
 	var jsDriverGeneratorVisitor = function() {
 		
-		var result = {};
+		var thisVisitor= {};
 		
-		result.generatedCode = {};
-
-		result.callback = function(element) {
+		thisVisitor.genCode = function(element) {
 			var type = element.TYPE;
 			l.debug("Visiting element: " + type + "...");
-			if (result['visit' + type]) {
+			if (thisVisitor['genCode' + type]) {
 				l.debug("Can handle.");
-				result['visit' + type].call(result, element);
+				return thisVisitor['genCode' + type].call(thisVisitor, element);
 			} else {
 				l.debug("Cannot handle.");
+				throw new Error("Unhandled AST Node!" + element);
 			}
 		};
 
-		result.visitToplevel = function(element) {
+		thisVisitor.genCodeToplevel = function(element) {
 			l.debug("Visiting Toplevel node...");
+
+			var code = "";
+			
+			code += _.template('<%= testCaseName %> = TestCase("<%= testCaseName %>");', {
+				testCaseName: "GeneratedTestCase"
+			});
+			
+			_.each(element.body, function(child) {
+				//code += thisVisitor.genCode(child);
+			});
 			
 			l.debug("Visiting Toplevel node... OK");
+			
+			return code;
 		};
 		
-		return result;
+		return thisVisitor;
 	};
-
-	return {
-		generateTestCodeAST : generateTestCodeAST,
-		abstractGenerator : abstractGenerator,
-		jsDriverGeneratorVisitor : jsDriverGeneratorVisitor
-	};
+	
+	that.generateTestCodeAST = generateTestCodeAST;
+	that.jsDriverGeneratorVisitor = jsDriverGeneratorVisitor;
+	
+	return that;
 
 };
 
