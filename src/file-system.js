@@ -1,4 +1,4 @@
-var QuickUnitFs = function() {
+var quickUnitFs = function() {
 	var fs = require('fs');
 	var futils = require('underscore');
 	
@@ -17,4 +17,4 @@ var QuickUnitFs = function() {
 	};
 };
 
-module.exports = QuickUnitFs;
+module.exports = quickUnitFs;

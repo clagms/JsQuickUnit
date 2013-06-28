@@ -1,15 +1,15 @@
 var a = require('assert');
-var FileSystem = require('../src/file-system.js');
+var fileSystem = require('../src/file-system.js');
 
 
 var testFileSystemExists = function() {
 
-	var fs = new FileSystem();
+	var fs = fileSystem();
 	
 	a(fs);
 	a.equal(fs, fs);
 	
-	var f2 = new FileSystem();
+	var f2 = fileSystem();
 	
 	a.notEqual(fs, f2);
 	
@@ -17,7 +17,7 @@ var testFileSystemExists = function() {
 };
 
 var testFileSystemBasic = function() {
-	var fs = new FileSystem();
+	var fs = fileSystem();
 	var codeast1 = fs.readFile("./samples/src/inc.js");
 	var codeast2 = fs.readFile("./samples/src/inc.js");
 	
@@ -28,7 +28,7 @@ var testFileSystemBasic = function() {
 };
 
 var testMapEachFile = function() {
-	var fs = new FileSystem();
+	var fs = fileSystem();
 	
 	var fsNative = require('fs');
 	

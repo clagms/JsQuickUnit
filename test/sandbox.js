@@ -1,5 +1,5 @@
 var a = require('assert');
-var FileSystem = require('../src/file-system.js');
+var fileSystem = require('../src/file-system.js');
 
 var testBasicValues = function() {
 	a(!undefined);
@@ -11,7 +11,7 @@ var testBasicValues = function() {
 	a(a.someReallyStrangeProperty == undefined);
 	a(!a.someReallyStrangeProperty);
 	
-	var fs = new FileSystem();
+	var fs = fileSystem();
 	
 	a.equal(JSON.stringify(JSON.parse(fs.readFile("./samples/src/inc.json")), null, 4), fs.readFile("./samples/src/inc.json"));
 	

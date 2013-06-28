@@ -1,16 +1,16 @@
 var a = require('assert');
 
-var AbstractGenerator = require('../src/abstract-generator.js');
+var abstractGenerator = require('../src/abstract-generator.js');
 
 
 var testGeneratorExists = function() {
 
-	var generator = new AbstractGenerator();
+	var generator = abstractGenerator();
 	
 	a(generator);
 	a.deepEqual(generator, generator);
 	
-	var p2 = new AbstractGenerator();
+	var p2 = abstractGenerator();
 	
 	a.notEqual(generator, p2);
 	

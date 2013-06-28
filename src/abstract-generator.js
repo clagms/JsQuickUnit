@@ -1,12 +1,11 @@
 /*
  * Contains utilities reusable across all generators.
  */
-var AbstractQuickUnitGenerator = function() {
-	
+var abstractQuickUnitGenerator = function() {
 	
 	return {
-
+		
 	};
 };
 
-module.exports = AbstractQuickUnitGenerator;
+module.exports = abstractQuickUnitGenerator;

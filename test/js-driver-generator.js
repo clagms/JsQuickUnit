@@ -1,17 +1,17 @@
 var a = require('assert');
 
-var JsDriverGenerator = require('../src/js-driver-generator.js');
-var Parser = require('../src/parser.js');
-var FileSystem = require('../src/file-system.js');
+var jsDriverGenerator = require('../src/js-driver-generator.js');
+var parser = require('../src/parser.js');
+var fileSystem = require('../src/file-system.js');
 
 var testGeneratorExists = function() {
 
-	var generator = new JsDriverGenerator();
+	var generator = jsDriverGenerator();
 	
 	a(generator);
 	a.deepEqual(generator, generator);
 	
-	var p2 = new JsDriverGenerator();
+	var p2 = jsDriverGenerator();
 	
 	a.notEqual(generator, p2);
 	
@@ -24,13 +24,13 @@ var testGeneratorExists = function() {
 
 var testTransform = function() {
 
-	var generator = new JsDriverGenerator();
+	var generator = jsDriverGenerator();
 		
-	var parser = new Parser();
-	var fs = new FileSystem();
+	var parserInstance = parser();
+	var fs = fileSystem();
 	
 	var codeString = fs.readFile("./samples/src/inc.js");
-	var codeAST = parser.parse(codeString);
+	var codeAST = parserInstance.parse(codeString);
 	
 	generator.generateTestCodeAST(codeAST);
 	

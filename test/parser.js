@@ -1,18 +1,18 @@
 var a = require('assert');
 var l = require('../src/logger.js');
 
-var Parser = require('../src/parser.js');
-var FileSystem = require('../src/file-system.js');
+var parserFactory = require('../src/parser.js');
+var fileSystemFactory = require('../src/file-system.js');
 
 
 var testParserExists = function() {
 
-	var parser = new Parser();
+	var parser = parserFactory();
 	
 	a(parser);
 	a.equal(parser, parser);
 	
-	var p2 = new Parser();
+	var p2 = parserFactory();
 	
 	a.notEqual(parser, p2);
 	
@@ -20,8 +20,8 @@ var testParserExists = function() {
 };
 
 var testParserBasic = function() {
-	var fs = new FileSystem();
-	var parser = new Parser();
+	var fs = fileSystemFactory();
+	var parser = parserFactory();
 	var codeast1 = fs.readFile("./samples/src/inc.js");
 	var expectedJson = JSON.parse(fs.readFile("./samples/src/inc.json"));
 	var actast1 = parser.parse(codeast1);
