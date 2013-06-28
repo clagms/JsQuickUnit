@@ -3,8 +3,11 @@ var FileSystem = require('../src/file-system.js');
 
 var testBasicValues = function() {
 	a(!undefined);
+	a(!!!undefined);
 	a(false == false);
 	a('' == false);
+	a(!(0 === false));
+	a(false == 0);
 	a(a.someReallyStrangeProperty == undefined);
 	a(!a.someReallyStrangeProperty);
 	

@@ -27,9 +27,40 @@ var testFileSystemBasic = function() {
 	a.deepEqual(codeast1, codeast2);
 };
 
+var testMapEachFile = function() {
+	var fs = new FileSystem();
+	
+	var fsNative = require('fs');
+	
+	var fsReadSync = fsNative.readdirSync;
+	
+	var fsReadSyncDouble = function(dir) {
+		
+		fsReadSyncDouble.called = true;
+		fsReadSyncDouble.dir = dir;
+		
+		return [1,2,3,4,5];
+	};
+	
+	fsNative.readdirSync = fsReadSyncDouble;
+	
+	a(! fsReadSyncDouble.called);
+	
+	var files = fs.mapEachFile("./samples/src", function(item) {
+		return item;
+	});
+	
+	a(fsReadSyncDouble.called);
+	a.deepEqual(fsReadSyncDouble.dir, "./samples/src");
+	a.deepEqual(files, [1,2,3,4,5]);
+	
+	fs.readdirSync = fsReadSync;
+};
+
 
 exports.run = function() {
 	testFileSystemExists();
 	testFileSystemBasic();
+	testMapEachFile();
 };
 
