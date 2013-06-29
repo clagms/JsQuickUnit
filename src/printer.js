@@ -1,4 +1,4 @@
-var quickUnitPrinter = function() {
+var makePrinter = function() {
 	
 	var printCode = function(code) {
 		return code.print_to_string();
@@ -10,4 +10,4 @@ var quickUnitPrinter = function() {
 	};
 };
 
-module.exports = quickUnitPrinter;
+module.exports = makePrinter;

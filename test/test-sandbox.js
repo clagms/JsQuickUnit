@@ -17,10 +17,25 @@ var testBasicValues = function() {
 	
 	a.equal(JSON.stringify(JSON.parse(fs.readFile("./samples/src/inc.json")), null, 4), fs.readFile("./samples/src/inc.json"));
 	
+	var obj1 = {};
+	var obj2 = {};
+	
+	a(obj1 != obj2);
+	a(obj1 !== obj2);
+	
+	a.deepEqual(obj1, obj2);
+	
+	var obj3 = {node: {}};
+	var obj4 = {node: {}};
+	
+	a(obj3 != obj4);
+	a(obj3 !== obj4);
+	
+	a.deepEqual(obj3, obj4);
+	
 };
 
 var testUnderscoreStuff = function() {
-	
 	
 };
 

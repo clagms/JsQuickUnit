@@ -23,8 +23,11 @@ var testParserBasic = function() {
 	var fs = fileSystemFactory();
 	var parser = parserFactory();
 	var codeast1 = fs.readFile("./samples/src/inc.js");
+	
 	var expectedJson = JSON.parse(fs.readFile("./samples/src/inc.json"));
 	var actast1 = parser.parse(codeast1);
+	
+	//l.debug(JSON.stringify(actast1, null, 4));
 	
 	a(actast1);
 	

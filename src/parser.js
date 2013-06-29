@@ -1,4 +1,4 @@
-var quickUnitParser = function() {
+var makeParser = function() {
 	var uglifyjs = require('uglify-js');
 	
 	var parseCode = function(code) {
@@ -11,4 +11,4 @@ var quickUnitParser = function() {
 	};
 };
 
-module.exports = quickUnitParser;
+module.exports = makeParser;
