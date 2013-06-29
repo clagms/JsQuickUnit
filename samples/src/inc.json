@@ -1,0 +1,276 @@
+{
+    "end": {
+        "file": null,
+        "comments_before": [],
+        "nlb": false,
+        "endpos": 85,
+        "pos": 84,
+        "col": 1,
+        "line": 6,
+        "value": ";",
+        "type": "punc"
+    },
+    "start": {
+        "file": null,
+        "comments_before": [
+            {
+                "file": null,
+                "nlb": true,
+                "endpos": 43,
+                "pos": 0,
+                "col": 0,
+                "line": 1,
+                "value": "*\n * @expect assertEquals(inc(5), 6);\n ",
+                "type": "comment2"
+            }
+        ],
+        "nlb": true,
+        "endpos": 47,
+        "pos": 44,
+        "col": 0,
+        "line": 4,
+        "value": "var",
+        "type": "keyword"
+    },
+    "body": [
+        {
+            "end": {
+                "file": null,
+                "comments_before": [],
+                "nlb": false,
+                "endpos": 85,
+                "pos": 84,
+                "col": 1,
+                "line": 6,
+                "value": ";",
+                "type": "punc"
+            },
+            "start": {
+                "file": null,
+                "comments_before": [
+                    {
+                        "file": null,
+                        "nlb": true,
+                        "endpos": 43,
+                        "pos": 0,
+                        "col": 0,
+                        "line": 1,
+                        "value": "*\n * @expect assertEquals(inc(5), 6);\n ",
+                        "type": "comment2"
+                    }
+                ],
+                "nlb": true,
+                "endpos": 47,
+                "pos": 44,
+                "col": 0,
+                "line": 4,
+                "value": "var",
+                "type": "keyword"
+            },
+            "definitions": [
+                {
+                    "end": {
+                        "file": null,
+                        "comments_before": [],
+                        "nlb": true,
+                        "endpos": 84,
+                        "pos": 83,
+                        "col": 0,
+                        "line": 6,
+                        "value": "}",
+                        "type": "punc"
+                    },
+                    "start": {
+                        "file": null,
+                        "comments_before": [],
+                        "nlb": false,
+                        "endpos": 51,
+                        "pos": 48,
+                        "col": 4,
+                        "line": 4,
+                        "value": "inc",
+                        "type": "name"
+                    },
+                    "value": {
+                        "end": {
+                            "file": null,
+                            "comments_before": [],
+                            "nlb": true,
+                            "endpos": 84,
+                            "pos": 83,
+                            "col": 0,
+                            "line": 6,
+                            "value": "}",
+                            "type": "punc"
+                        },
+                        "start": {
+                            "file": null,
+                            "comments_before": [],
+                            "nlb": false,
+                            "endpos": 62,
+                            "pos": 54,
+                            "col": 10,
+                            "line": 4,
+                            "value": "function",
+                            "type": "keyword"
+                        },
+                        "body": [
+                            {
+                                "end": {
+                                    "file": null,
+                                    "comments_before": [],
+                                    "nlb": false,
+                                    "endpos": 82,
+                                    "pos": 81,
+                                    "col": 13,
+                                    "line": 5,
+                                    "value": ";",
+                                    "type": "punc"
+                                },
+                                "start": {
+                                    "file": null,
+                                    "comments_before": [],
+                                    "nlb": true,
+                                    "endpos": 75,
+                                    "pos": 69,
+                                    "col": 1,
+                                    "line": 5,
+                                    "value": "return",
+                                    "type": "keyword"
+                                },
+                                "value": {
+                                    "end": {
+                                        "file": null,
+                                        "comments_before": [],
+                                        "nlb": false,
+                                        "endpos": 81,
+                                        "pos": 80,
+                                        "col": 12,
+                                        "line": 5,
+                                        "value": 1,
+                                        "type": "num"
+                                    },
+                                    "start": {
+                                        "file": null,
+                                        "comments_before": [],
+                                        "nlb": false,
+                                        "endpos": 77,
+                                        "pos": 76,
+                                        "col": 8,
+                                        "line": 5,
+                                        "value": "x",
+                                        "type": "name"
+                                    },
+                                    "right": {
+                                        "end": {
+                                            "file": null,
+                                            "comments_before": [],
+                                            "nlb": false,
+                                            "endpos": 81,
+                                            "pos": 80,
+                                            "col": 12,
+                                            "line": 5,
+                                            "value": 1,
+                                            "type": "num"
+                                        },
+                                        "start": {
+                                            "file": null,
+                                            "comments_before": [],
+                                            "nlb": false,
+                                            "endpos": 81,
+                                            "pos": 80,
+                                            "col": 12,
+                                            "line": 5,
+                                            "value": 1,
+                                            "type": "num"
+                                        },
+                                        "value": 1
+                                    },
+                                    "operator": "+",
+                                    "left": {
+                                        "end": {
+                                            "file": null,
+                                            "comments_before": [],
+                                            "nlb": false,
+                                            "endpos": 77,
+                                            "pos": 76,
+                                            "col": 8,
+                                            "line": 5,
+                                            "value": "x",
+                                            "type": "name"
+                                        },
+                                        "start": {
+                                            "file": null,
+                                            "comments_before": [],
+                                            "nlb": false,
+                                            "endpos": 77,
+                                            "pos": 76,
+                                            "col": 8,
+                                            "line": 5,
+                                            "value": "x",
+                                            "type": "name"
+                                        },
+                                        "name": "x"
+                                    }
+                                }
+                            }
+                        ],
+                        "argnames": [
+                            {
+                                "end": {
+                                    "file": null,
+                                    "comments_before": [],
+                                    "nlb": false,
+                                    "endpos": 64,
+                                    "pos": 63,
+                                    "col": 19,
+                                    "line": 4,
+                                    "value": "x",
+                                    "type": "name"
+                                },
+                                "start": {
+                                    "file": null,
+                                    "comments_before": [],
+                                    "nlb": false,
+                                    "endpos": 64,
+                                    "pos": 63,
+                                    "col": 19,
+                                    "line": 4,
+                                    "value": "x",
+                                    "type": "name"
+                                },
+                                "name": "x"
+                            }
+                        ],
+                        "name": null
+                    },
+                    "name": {
+                        "end": {
+                            "file": null,
+                            "comments_before": [],
+                            "nlb": false,
+                            "endpos": 51,
+                            "pos": 48,
+                            "col": 4,
+                            "line": 4,
+                            "value": "inc",
+                            "type": "name"
+                        },
+                        "start": {
+                            "file": null,
+                            "comments_before": [],
+                            "nlb": false,
+                            "endpos": 51,
+                            "pos": 48,
+                            "col": 4,
+                            "line": 4,
+                            "value": "inc",
+                            "type": "name"
+                        },
+                        "name": "inc"
+                    }
+                }
+            ]
+        }
+    ]
+}

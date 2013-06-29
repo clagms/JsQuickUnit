@@ -1,11 +1,11 @@
 /*
  * Responsible for performing the ast generation.
  */
-var jsDriverGenerator = function(spec) {
+var jsDriverGenerator = function(specP) {
 	
 	var _ = require('underscore');
 	
-	var spec = spec || {};
+	var spec = specP || {};
 	
 	var that = {};
 	
@@ -64,6 +64,7 @@ var jsDriverGenerator = function(spec) {
 			_.each(element.body, function(child) {
 				code += thisVisitor.genCode(child);
 			});
+			
 			
 			l.debug("Visiting Toplevel node... OK");
 			
