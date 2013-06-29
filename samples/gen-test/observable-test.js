@@ -1,47 +1,43 @@
 // created for the file. Any function in the global area is tested here.
 ObservableTest = TestCase("ObservableFileTest");
 
-ObservableTest = TestCase("ObservableConstructorTest"); // created for one
-// constructor
-
-// tesObservable property comes from the constructor annotation. In that way we
-// know the to test, we need to create an object.
-// Ideally, we can try to infer this kind of stuff but to keep it simple, like
-// this is fine.
-ObservableTest.prototype.testAddObserverTest1 = function() {
-
-	var _objut = new Observable();
-
-	var observer = function() {
-	};
-
-	_objut.addObserver(observer);
-	assertEquals(_objut.observers[0], observer);
-
+ObservableTest.prototype.test1 = function() {
+	
+	var observer=function() {};
+	var obj = makeObservable({});
+	
+	obj.addObserver(observer);
+	
+	assertEquals(observer, obj.observers[0]);
+	
 };
 
-ObservableTest.prototype.testAddObserverTest2 = function() {
-	var _objut = new Observable();
 
-	var observer1 = function() {
-	};
-	var observer2 = function() {
-	};
-	_objut.addObserver(observer1);
-	_objut.addObserver(observer2);
-
-	assertEquals(2, _objut.observers.length);
-	assertEquals(observer1, _objut.observers[0]);
-	assertEquals(observer2, _objut.observers[1]);
+ObservableTest.prototype.test2 = function() {
+	
+	var observer1=function() {};
+	var observer2=function() {};
+	var obj = makeObservable({});
+	
+	obj.addObserver(observer1);
+	
+	obj.addObserver(observer2);
+	
+	assertEquals(2,obj.observers.length);
+	assertEquals(observer1,obj.observers[0]);
+	assertEquals(observer2,obj.observers[1]);
+	
 };
 
-ObservableTest.prototype.testAddObserverTest3 = function() {
-	var _objut = new Observable();
-
-	var observer = {};
-	var callback = function() {
-		_objut.addObserver(observer);
-	};
-
+ObservableTest.prototype.test3 = function() {
+	
+	var observer={};
+	
+	var obj = makeObservable({});
+	
+	var callback=function(){ obj.addObserver(observer); };
+	
 	assertException(callback , "TypeError");
+	
 };
+

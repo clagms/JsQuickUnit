@@ -1,35 +1,42 @@
-/**
- * @constructor
- */
-var Observable = function() {
-	this.observers = [];
+var makeObservable = function(that) {
+	
+	if (!that) {
+		that = {};
+	}
 
+	that.observers = [];
+	
 	/**
 	 * @test test1
 	 * @with observer=function() {};
-	 * @run this.addObserver(observer);
-	 * @expect assertEquals(observer, this.observers[0]);
+	 * @with obj = makeObservable({});
+	 * @run obj.addObserver(observer);
+	 * @expect assertEquals(observer, obj.observers[0]);
 	 * 
 	 * @test test2
 	 * @with observer1 = function() {};
 	 * @with observer2 = function() {};
-	 * @run this.addObserver(observer1);
-	 * @run this.addObserver(observer2);
-	 * @expect assertEquals(2,this.observers.length);
-	 * @expect assertEquals(observer1,this.observers[0]);
-	 * @expect assertEquals(observer2,this.observers[1]);
+	 * @with obj = makeObservable({});
+	 * @run obj.addObserver(observer1);
+	 * @run obj.addObserver(observer2);
+	 * @expect assertEquals(2,obj.observers.length);
+	 * @expect assertEquals(observer1,obj.observers[0]);
+	 * @expect assertEquals(observer2,obj.observers[1]);
 	 * 
 	 * @test test3
 	 * @with observer={}
-	 * @with callback=function(){ this.addObserver(observer); };
+	 * @with obj = makeObservable({});
+	 * @with callback=function(){ obj.addObserver(observer); };
 	 * @expect assertException(callback , "TypeError");
 	 * 
 	 */
-	this.addObserver = function(observer) {
+	that.addObserver = function(observer) {
 		if (typeof observer != "function") {
 			throw new TypeError("observer is not function");
 		}
-		this.observers.push(observer);
+		that.observers.push(observer);
 	};
+	
+	return that;
 
 };

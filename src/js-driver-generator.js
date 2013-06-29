@@ -48,7 +48,7 @@ var jsDriverGenerator = function(spec) {
 				return thisVisitor['genCode' + type].call(thisVisitor, element);
 			} else {
 				l.debug("Cannot handle.");
-				throw new Error("Unhandled AST Node!" + element);
+				throw new Error("Unhandled AST Node of type " + type);
 			}
 		};
 
@@ -62,10 +62,20 @@ var jsDriverGenerator = function(spec) {
 			});
 			
 			_.each(element.body, function(child) {
-				//code += thisVisitor.genCode(child);
+				code += thisVisitor.genCode(child);
 			});
 			
 			l.debug("Visiting Toplevel node... OK");
+			
+			return code;
+		};
+		
+		thisVisitor.genCodeVar = function(element) {
+			l.debug("Visiting Var node...");
+
+			var code = "";
+			
+			l.debug("Visiting Var node... OK");
 			
 			return code;
 		};
