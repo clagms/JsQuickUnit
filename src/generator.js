@@ -11,7 +11,7 @@ var makeGenerator = function(specP) {
 
 	var a = require('assert');
 
-	var makeTest = spec.makeTest || require('../src/test.js');
+	var makeTests = spec.makeTests || require('../src/test.js');
 
 	var l = spec.logger || require('../src/logger.js').get('AbstractGenerator');
 
@@ -24,7 +24,7 @@ var makeGenerator = function(specP) {
 			};
 
 	that.generateCodeFromTest = spec.generateCodeFromTest
-			|| function(test, sourceCodeAst) {
+			|| function(test) {
 				throw "This must be provided in spec";
 			};
 
@@ -42,8 +42,10 @@ var makeGenerator = function(specP) {
 
 		code += that.generatePreambleCode(sourceCodeAst);
 
-		_.each(that.findAllTestAnnotations(sourceCodeAst), function(test) {
-			code += that.generateCodeFromTest(test, sourceCodeAst);
+		_.each(that.findAllTestAnnotations(sourceCodeAst), function(node) {
+			_.each(makeTests(node), function(test) {
+				code += that.generateCodeFromTest(test);				
+			});
 		});
 
 		code += that.generatePostambleCode(sourceCodeAst);

@@ -1,8 +1,8 @@
-var makeTest = function(astNode) {
+var makeTests = function(astNode) {
 	
-	return {
+	return [{
 		node: astNode
-	};
+	}];
 };
 
-module.exports = makeTest;
+module.exports = makeTests;

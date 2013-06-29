@@ -162,7 +162,7 @@ var test_generatorCompletion = function() {
 				missingMethods.generatePreambleCode.called = true;
 				return true;
 			},
-			generateCodeFromTest: function(test, sourceCodeAst) {
+			generateCodeFromTest: function(test) {
 				missingMethods.generateCodeFromTest.called = true;
 				return true;
 			},
