@@ -11,35 +11,19 @@ var makeJsDriverGenerator = function(specP) {
 	
 	var that = {};
 	
-	var l = require('../src/logger.js').get('JsDriverGenerator');
+	var l = spec.logger || require('../src/logger.js').get('JsDriverGenerator');
 	
-	if (!spec.abstGenerator) {
-		var abstractGeneratorFactory = require("../src/abstract-generator.js");
-		that.abstractGenerator = abstractGeneratorFactory(spec);
-	} else {
-		that.abstractGenerator = spec.abstGenerator(spec);
-	}
-	
-	that.prototype = that.abstractGenerator;
-
-	that.generateTestCodeAST = function(sourceCodeAst) {
-		l.info("Generating test code...");
-
-		l.debug("AST: \n" + JSON.stringify(sourceCodeAst, null, 4));
-		
-		_.each(that.findAllTestAnnotations(sourceCodeAst), function(test) {
-			code += that.generateTestCode(test);
-		});
-
-		l.info("Generating test code... OK");
-		
-		l.debug(code);
-		
-		return code;
+	that.generatePreambleCode = function(sourceCodeAst) {
+		return "Preamble Code!";
 	};
 	
+	that.generateCodeFromTest = function(test, sourceCodeAst) {
+		return "Code From Test!";
+	};
 	
-	
+	that.generatePostambleCode = function(sourceCodeAst) {
+		return "Postamble Code!";
+	};
 	
 	return that;
 };
