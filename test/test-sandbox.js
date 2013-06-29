@@ -1,6 +1,8 @@
 var a = require('assert');
 var fileSystem = require('../src/file-system.js');
 
+var l = console.log;
+
 var _ = require('underscore');
 
 var testBasicValues = function() {
@@ -36,7 +38,14 @@ var testBasicValues = function() {
 };
 
 var testUnderscoreStuff = function() {
+	var list = [[0, 1], [2, 3], [4, 5]];
+	var flat = _.reduceRight(list, function(a, b) { return a.concat(b); }, []);
 	
+	a.deepEqual(flat, [ 4, 5, 2, 3, 0, 1 ]);
+	
+	var flatInv = _.reduce(list, function(a, b) { return a.concat(b); }, []);
+	
+//	l(flatInv);
 };
 
 exports.run = function() {
