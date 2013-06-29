@@ -73,13 +73,13 @@ Run QuickUnit (specifying js-test-driver as target) and a file fact-test.js will
 		that.observers = [];
 	
 		/**
-		 * @test test1
+		 * @test addSingle
 		 * @with observer=function() {};
 		 * @with obj = makeObservable({});
 		 * @run obj.addObserver(observer);
 		 * @expect assertEquals(observer, obj.observers[0]);
 		 * 
-		 * @test test2
+		 * @test addTwo
 		 * @with observer1 = function() {};
 		 * @with observer2 = function() {};
 		 * @with obj = makeObservable({});
@@ -89,7 +89,7 @@ Run QuickUnit (specifying js-test-driver as target) and a file fact-test.js will
 		 * @expect assertEquals(observer1,obj.observers[0]);
 		 * @expect assertEquals(observer2,obj.observers[1]);
 		 * 
-		 * @test test3
+		 * @test errorNonFunction
 		 * @with observer={}
 		 * @with obj = makeObservable({});
 		 * @with callback=function(){ obj.addObserver(observer); };
@@ -109,9 +109,10 @@ Run QuickUnit (specifying js-test-driver as target) and a file fact-test.js will
 
 This is the result (using js-test-driver as a target):
 
+	// created for the file. Any function in the global area is tested here.
 	ObservableTest = TestCase("ObservableFileTest");
 
-	ObservableTest.prototype.test1 = function() {
+	ObservableTest.prototype.test_addSingle = function() {
 	
 		var observer=function() {};
 		var obj = makeObservable({});
@@ -123,7 +124,7 @@ This is the result (using js-test-driver as a target):
 	};
 
 
-	ObservableTest.prototype.test2 = function() {
+	ObservableTest.prototype.test_addTwo = function() {
 	
 		var observer1=function() {};
 		var observer2=function() {};
@@ -139,7 +140,7 @@ This is the result (using js-test-driver as a target):
 	
 	};
 
-	ObservableTest.prototype.test3 = function() {
+	ObservableTest.prototype.test_errorNonFunction = function() {
 	
 		var observer={};
 	
@@ -150,3 +151,5 @@ This is the result (using js-test-driver as a target):
 		assertException(callback , "TypeError");
 	
 	};
+
+

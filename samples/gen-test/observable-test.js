@@ -1,7 +1,7 @@
 // created for the file. Any function in the global area is tested here.
 ObservableTest = TestCase("ObservableFileTest");
 
-ObservableTest.prototype.test1 = function() {
+ObservableTest.prototype.test_addSingle = function() {
 	
 	var observer=function() {};
 	var obj = makeObservable({});
@@ -13,7 +13,7 @@ ObservableTest.prototype.test1 = function() {
 };
 
 
-ObservableTest.prototype.test2 = function() {
+ObservableTest.prototype.test_addTwo = function() {
 	
 	var observer1=function() {};
 	var observer2=function() {};
@@ -29,7 +29,7 @@ ObservableTest.prototype.test2 = function() {
 	
 };
 
-ObservableTest.prototype.test3 = function() {
+ObservableTest.prototype.test_errorNonFunction = function() {
 	
 	var observer={};
 	

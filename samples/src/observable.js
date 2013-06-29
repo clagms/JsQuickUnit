@@ -7,13 +7,13 @@ var makeObservable = function(that) {
 	that.observers = [];
 	
 	/**
-	 * @test test1
+	 * @test addSingle
 	 * @with observer=function() {};
 	 * @with obj = makeObservable({});
 	 * @run obj.addObserver(observer);
 	 * @expect assertEquals(observer, obj.observers[0]);
 	 * 
-	 * @test test2
+	 * @test addTwo
 	 * @with observer1 = function() {};
 	 * @with observer2 = function() {};
 	 * @with obj = makeObservable({});
@@ -23,7 +23,7 @@ var makeObservable = function(that) {
 	 * @expect assertEquals(observer1,obj.observers[0]);
 	 * @expect assertEquals(observer2,obj.observers[1]);
 	 * 
-	 * @test test3
+	 * @test errorNonFunction
 	 * @with observer={}
 	 * @with obj = makeObservable({});
 	 * @with callback=function(){ obj.addObserver(observer); };
