@@ -1,7 +1,7 @@
-/**
- * @expect assertEquals(inc(5), 6);
+/** @test incTest
+ * @expect assertEquals(increment(5), 6);
  * 
  */
-var inc = function(x) {
+var increment = function(x) {
 	return x + 1;
 };
