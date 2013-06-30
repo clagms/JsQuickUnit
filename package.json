@@ -1,18 +1,39 @@
 {
-  "name": "JsQuickUnit",
-  "version": "0.1.0",
-  "description": "JsQuickUnit",
-  "main": "hello-world-server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
-  },
-  "repository": "",
-  "keywords": [
-    "Node.js",
-    "Eclipse",
-    "Nodeclipse"
-  ],
-  "author": "",
-  "license": "BSD",
-  "readmeFilename": "README.md"
+    "name": "jsquickunit",
+    "preferGlobal": true,
+    "version": "0.4.0",
+    "author": "Claudio Gomes <cla.gms@gmail.com>",
+    "description": "Quickly define and run unit tests in any test framework.",
+    "bin": {
+        "jsquickunit": "./bin/jsquickunit"
+    },
+    "main": "./src/quick-unit.js",
+    "scripts": {
+        "test": "node ./run-all.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/clagms/JsQuickUnit.git"
+    },
+    "keywords": [
+        "quick-unit",
+        "qunit",
+        "test",
+        "tests",
+        "jsquickunit",
+        "js-quick-unit",
+        "unit",
+        "js-test-driver"
+    ],
+    "dependencies": {
+        "underscore": "1.x.x",
+        "optimist": "0.x.x",
+        "uglify-js": "2.x.x"
+    },
+    "analyze": true,
+    "license": "BSD",
+    "readmeFilename": "README.md",
+    "engines": {
+        "node": ">=0.9.0"
+    }
 }
