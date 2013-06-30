@@ -9,19 +9,42 @@ var makeJsDriverGenerator = function(specP) {
 	
 	var spec = specP || {};
 	
+	var sourceFile = "";
+	
 	var that = {};
+	
+	that.updateSrcFile = function(srcFile) {
+		sourceFile = srcFile;
+	};
 	
 	var l = spec.logger || require('../src/logger.js').get('JsDriverGenerator');
 	
+	var getFileName = function(sourceFile) {
+		var fileNameWithExtension = _.last(sourceFile.split('/'));
+		var fileName = fileNameWithExtension.slice(0, fileNameWithExtension.length - 3);
+		return fileName;
+	};
+	
+	var getTestCaseName = function() {
+		if (sourceFile) {
+			return getFileName(sourceFile) + "TestCase";
+		} else {
+			return "TestCase";
+		}
+	};
+	
 	that.generatePreambleCode = function(sourceCodeAst) {
-		return 'TestCase = TestCase("TestCase");';
+		return _.template('var <%= testName %> = TestCase("<%= testName %>");', {
+			testName : getTestCaseName()
+		});
 	};
 	
 	that.generateCodeFromTest = function(test, sourceCodeAst) {
 		var code = '';
 		
-		code += _.template('TestCase.prototype.test_<%= testName %> = function() {', {
-			testName: test.testName
+		code += _.template('<%= testCaseName %>.prototype.test_<%= testName %> = function() {', {
+			testName: test.testName,
+			testCaseName: getTestCaseName() 
 		});
 		code += '\n';
 		

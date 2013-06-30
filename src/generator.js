@@ -33,18 +33,34 @@ var makeGenerator = function(specP) {
 				throw "This must be provided in spec";
 			};
 
-	that.generateTestCodeAST = function(sourceCodeAst) {
+	that.generateTestCodeAST = function(sourceCodeAst, opt) {
+		
+		var options = opt || {};
+		
 		//l.info("Generating test code...");
 
 		//l.debug("AST: \n" + JSON.stringify(sourceCodeAst, null, 4));
-
+		
+		if (spec.updateSrcFile && options.sourceFileName) {
+			spec.updateSrcFile(options.sourceFileName);			
+		}
+		if (spec.updateFullAST) {
+			spec.updateFullAST(sourceCodeAst);
+		}
+		
+		var allNodesAnnotated = that.findAllTestAnnotations(sourceCodeAst);
+		
+		if (allNodesAnnotated.length === 0) {
+			return "";
+		}
+		
 		var code = "";
 
 		code += that.generatePreambleCode(sourceCodeAst);
 		
 		code += "\n";
 		
-		_.each(that.findAllTestAnnotations(sourceCodeAst), function(node) {
+		_.each(allNodesAnnotated, function(node) {
 			_.each(makeTests(node), function(test) {
 				code += that.generateCodeFromTest(test);
 				code += "\n";

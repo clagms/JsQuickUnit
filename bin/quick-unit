@@ -9,32 +9,33 @@ var quickUnit = require('../src/quick-unit.js');
 
 var optimist = require("optimist");
 
+var _ = require("underscore");
+
 var argv = optimist.argv;
 
+var isFile = function(path) {
+	var lastPart = _.last(path.split('/'));
+	
+	var extension = _.last(path.split('.'));
+	
+	return extension === "js";
+}
+
 var handleTwoArguments = function(args) {
-	var sourceFile = args[0];
-	var targetFile = args[1];
+	var source = args[0];
+	var target = args[1];
 	
-	quickUnit.generateTestToFile(sourceFile, targetFile);
+	if (isFile(source) && isFile(target)) {
+		quickUnit.generateTestToFile(source, target);
+	} else {
+		quickUnit.generateTestsToDir(source, target);
+	}
 }
 
-var handleSingleArgument = function(args) {
-	var sourceDir = args[0];
-	
-	
-}
 
 
 
-
-
-
-
-
-
-if (argv._.length == 1) {
-	handleSingleArgument(argv._);
-} else if (argv._.length == 2) {
+if (argv._.length == 2) {
 	handleTwoArguments(argv._);
 } else {
 	throw new Error ("Unexpected number of args");
