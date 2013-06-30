@@ -58,9 +58,18 @@ var testMapEachFile = function() {
 };
 
 
+var testWriteFile = function() {
+	var fs = fileSystem();
+	
+	fs.writeFile('samples/gen-test/file.txt', "Some content.");
+	
+};
+
+
 exports.run = function() {
 	testFileSystemExists();
 	testFileSystemBasic();
 	testMapEachFile();
+	testWriteFile();
 };
 

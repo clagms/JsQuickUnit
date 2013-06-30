@@ -1,20 +1,25 @@
 var makeFileSystem = function() {
 	var fs = require('fs');
-	var futils = require('underscore');
+	var _ = require('underscore');
 	
-	var readFile = function(filePath) {
+	var that = {};
+	
+	that.readFile = function(filePath) {
 		return fs.readFileSync(filePath, 'utf8');
 	};
 	
-	var mapEachFile = function(dirPath, callback) {
+	that.mapEachFile = function(dirPath, callback) {
 		var files = fs.readdirSync(dirPath);
-		return futils.map(files, callback);
+		return _.map(files, callback);
 	};
 	
-	return {
-		readFile: readFile,
-		mapEachFile: mapEachFile
+	that.writeFile = function(filePath, data) {
+		return fs.writeFileSync(filePath, data);
 	};
+	
+	
+	
+	return that;
 };
 
 module.exports = makeFileSystem;

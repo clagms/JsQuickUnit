@@ -1,5 +1,5 @@
 var a = require('assert');
-var l = require('../src/logger.js');
+var l = console.log;
 
 var parserFactory = require('../src/parser.js');
 var fileSystemFactory = require('../src/file-system.js');
@@ -34,9 +34,19 @@ var testParserBasic = function() {
 	a.deepEqual(JSON.stringify(expectedJson, null, 4), JSON.stringify(actast1, null, 4));
 };
 
+var testBeautify = function() {
+	var parser = parserFactory();
+	var uglyCode = "var a = function() { return 0; };";
+	
+	var codePretty = parser.beautify(uglyCode);
+	
+	l(codePretty);
+};
+
 
 exports.run = function() {
 	testParserExists();
 	testParserBasic();
+	testBeautify();
 };
 
