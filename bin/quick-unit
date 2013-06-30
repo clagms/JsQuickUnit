@@ -1,0 +1,43 @@
+#! /usr/bin/env node
+// -*- js -*-
+
+var l = console.log;
+
+var sys = require("util");
+
+var quickUnit = require('../src/quick-unit.js');
+
+var optimist = require("optimist");
+
+var argv = optimist.argv;
+
+var handleTwoArguments = function(args) {
+	var sourceFile = args[0];
+	var targetFile = args[1];
+	
+	quickUnit.generateTestToFile(sourceFile, targetFile);
+}
+
+var handleSingleArgument = function(args) {
+	var sourceDir = args[0];
+	
+	
+}
+
+
+
+
+
+
+
+
+
+if (argv._.length == 1) {
+	handleSingleArgument(argv._);
+} else if (argv._.length == 2) {
+	handleTwoArguments(argv._);
+} else {
+	throw new Error ("Unexpected number of args");
+}
+
+
