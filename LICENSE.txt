@@ -1,14 +1,6 @@
-/***********************************************************************
+JsQuickUnit is released under the BSD license:
 
-  JsQuickUnit - Quickly define and run unit tests in any test framework.
-  https://github.com/clagms/JsQuickUnit
-
-  -------------------------------- (C) ---------------------------------
-
-                           Author: Claudio Gomes
-                            <cla.gms@gmail.com>
-
-  Distributed under the BSD license:
+-------------------------------- (C) ---------------------------------
 
     Copyright 2013 (c) Claudio Gomes <cla.gms@gmail.com>
 
@@ -37,19 +29,3 @@
     TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
     THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
     SUCH DAMAGE.
-
- ***********************************************************************/
-
-var makePrinter = function() {
-	
-	var printCode = function(code) {
-		return code.print_to_string();
-	};
-	
-	return {
-		printCode: printCode,
-		print: printCode
-	};
-};
-
-module.exports = makePrinter;
