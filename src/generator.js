@@ -41,15 +41,19 @@ var makeGenerator = function(specP) {
 		var code = "";
 
 		code += that.generatePreambleCode(sourceCodeAst);
-
+		
+		code += "\n";
+		
 		_.each(that.findAllTestAnnotations(sourceCodeAst), function(node) {
 			_.each(makeTests(node), function(test) {
-				code += that.generateCodeFromTest(test);				
+				code += that.generateCodeFromTest(test);
+				code += "\n";
 			});
 		});
 
 		code += that.generatePostambleCode(sourceCodeAst);
-
+		code += "\n";
+		
 		l.info("Generating test code... OK");
 
 		l.debug(code);
@@ -92,14 +96,6 @@ var makeGenerator = function(specP) {
 	};
 
 	that.nodeContainsTestAnnotation = function(astNode) {
-
-		// if (astNode.TYPE === "Toplevel") {
-		// // top level node doesn't count as annotation.
-		// // this is because if it is annotated, then the first child will be
-		// annotated too.
-		// // so we use that annotation.
-		// return false;
-		// }
 
 		var startToken = astNode.start;
 

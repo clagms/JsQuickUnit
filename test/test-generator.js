@@ -155,7 +155,7 @@ var test_overwriteMethods = function() {
 };
 
 
-var test_generatorCompletion = function() {
+var test_generatorCompletionWithStubs = function() {
 	
 	var missingMethods = {
 			generatePreambleCode: function(codeAst) {
@@ -186,6 +186,49 @@ var test_generatorCompletion = function() {
 };
 
 
+var test_generatorCompletionWithStubs2 = function() {
+	
+	var missingMethods = {
+			generatePreambleCode: function(codeAst) {
+				missingMethods.generatePreambleCode.called = true;
+				missingMethods.generatePreambleCode.count++;
+				return "Preamble Code!";
+			},
+			generateCodeFromTest: function(test) {
+				missingMethods.generateCodeFromTest.called = true;
+				missingMethods.generateCodeFromTest.count++;
+				return "Test Code!";
+			},
+			generatePostambleCode: function(codeAst) {
+				missingMethods.generatePostambleCode.called = true;
+				missingMethods.generatePostambleCode.count++;
+				return "Postamble Code!";
+			}
+	};
+	missingMethods.generateCodeFromTest.count = 0;
+	missingMethods.generatePreambleCode.count = 0;
+	missingMethods.generatePostambleCode.count = 0;
+	
+	
+	var generator = makeGenerator(missingMethods);
+	
+	var parser = makeParser();
+	
+	var fs = makeFileSystem();
+	
+	var codeString = fs.readFile("./samples/src/fact.js");
+	
+	var topLevelNode = parser.parse(codeString);
+	
+	var code = generator.generateTestCodeAST(topLevelNode);
+	
+	a.equal(1, missingMethods.generatePreambleCode.count);
+	a.equal(1, missingMethods.generatePostambleCode.count);
+	a.equal(2, missingMethods.generateCodeFromTest.count);
+	
+	a.equal('Preamble Code!\nTest Code!\nTest Code!\nPostamble Code!\n', code);
+};
+
 
 
 
@@ -195,7 +238,8 @@ exports.run = function() {
 	test_findAllTestAnnotationsStubbed();
 	test_findAllTestAnnotationsStubbedDuplicates();
 	test_overwriteMethods();
-	test_generatorCompletion();
+	test_generatorCompletionWithStubs();
+	test_generatorCompletionWithStubs2();
 	test_commentContainsTestAnnotation();
 	test_findAllTestAnnotationsComplex();
 };
