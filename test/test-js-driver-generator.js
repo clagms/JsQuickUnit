@@ -39,7 +39,7 @@ var test_generatorCompletion = function() {
 	
 	var code = generator.generateTestCodeAST(topLevelNode);
 	
-	l(code);
+	//l(code);
 };
 
 

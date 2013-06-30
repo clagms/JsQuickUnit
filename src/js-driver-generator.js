@@ -14,7 +14,7 @@ var makeJsDriverGenerator = function(specP) {
 	var l = spec.logger || require('../src/logger.js').get('JsDriverGenerator');
 	
 	that.generatePreambleCode = function(sourceCodeAst) {
-		return _.template('TestCase = TestCase("TestCase");');
+		return 'TestCase = TestCase("TestCase");';
 	};
 	
 	that.generateCodeFromTest = function(test, sourceCodeAst) {

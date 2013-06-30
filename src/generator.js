@@ -34,9 +34,9 @@ var makeGenerator = function(specP) {
 			};
 
 	that.generateTestCodeAST = function(sourceCodeAst) {
-		l.info("Generating test code...");
+		//l.info("Generating test code...");
 
-		l.debug("AST: \n" + JSON.stringify(sourceCodeAst, null, 4));
+		//l.debug("AST: \n" + JSON.stringify(sourceCodeAst, null, 4));
 
 		var code = "";
 
@@ -54,9 +54,9 @@ var makeGenerator = function(specP) {
 		code += that.generatePostambleCode(sourceCodeAst);
 		code += "\n";
 		
-		l.info("Generating test code... OK");
+		//l.info("Generating test code... OK");
 
-		l.debug(code);
+		//l.debug(code);
 
 		return code;
 	};

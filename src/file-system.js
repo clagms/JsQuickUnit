@@ -17,8 +17,6 @@ var makeFileSystem = function() {
 		return fs.writeFileSync(filePath, data);
 	};
 	
-	
-	
 	return that;
 };
 

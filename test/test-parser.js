@@ -40,7 +40,6 @@ var testBeautify = function() {
 	
 	var codePretty = parser.beautify(uglyCode);
 	
-	l(codePretty);
 };
 
 
