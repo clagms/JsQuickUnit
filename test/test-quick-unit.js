@@ -9,7 +9,7 @@ var test_quickUnitComplete = function() {
 	
 	quickUnit.generateTestToFile('samples/src/fact.js', 'samples/generated/test-fact.js');
 	
-	
+	quickUnit.generateTestsToDir('samples/src/', 'samples/generated/');
 };
 
 

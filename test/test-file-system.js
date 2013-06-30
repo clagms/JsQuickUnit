@@ -54,7 +54,7 @@ var testMapEachFile = function() {
 	a.deepEqual(fsReadSyncDouble.dir, "./samples/src");
 	a.deepEqual(files, [1,2,3,4,5]);
 	
-	fs.readdirSync = fsReadSync;
+	fsNative.readdirSync = fsReadSync;
 };
 
 
