@@ -14,15 +14,41 @@ var makeJsDriverGenerator = function(specP) {
 	var l = spec.logger || require('../src/logger.js').get('JsDriverGenerator');
 	
 	that.generatePreambleCode = function(sourceCodeAst) {
-		return "Preamble Code!";
+		return _.template('TestCase = TestCase("TestCase");');
 	};
 	
 	that.generateCodeFromTest = function(test, sourceCodeAst) {
-		return "Code From Test!";
+		var code = '';
+		
+		code += _.template('TestCase.prototype.test_<%= testName %> = function() {', {
+			testName: test.testName
+		});
+		code += '\n';
+		
+		_.each(test.withExpressions, function(withExpression) {
+			code += withExpression;
+			code += '\n';
+		});
+		
+		_.each(test.runExpressions, function(runExpression) {
+			code += runExpression;
+			code += '\n';
+		});
+		
+		_.each(test.expectExpressions, function(expectExpression) {
+			code += expectExpression;
+			code += '\n';
+		});
+		
+		code+='};';
+		code += '\n';
+		
+		
+		return code;
 	};
 	
 	that.generatePostambleCode = function(sourceCodeAst) {
-		return "Postamble Code!";
+		return "";
 	};
 	
 	return that;

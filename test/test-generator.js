@@ -230,8 +230,6 @@ var test_generatorCompletionWithStubs2 = function() {
 };
 
 
-
-
 exports.run = function() {
 	testGeneratorExists();
 	test_nodeContainsTestAnnotation();

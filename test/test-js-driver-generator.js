@@ -2,8 +2,10 @@ var a = require('assert');
 
 var makeGenerator = require('../src/generator.js');
 var makeJsDriverGenerator = require('../src/js-driver-generator.js');
-var parser = require('../src/parser.js');
-var fileSystem = require('../src/file-system.js');
+var makeParser = require('../src/parser.js');
+var makeFileSystem = require('../src/file-system.js');
+
+var l = console.log;
 
 var testGeneratorExists = function() {
 
@@ -23,9 +25,26 @@ var testGeneratorExists = function() {
 	
 };
 
+var test_generatorCompletion = function() {
+	
+	var generator = makeGenerator(makeJsDriverGenerator());
+	
+	var parser = makeParser();
+	
+	var fs = makeFileSystem();
+	
+	var codeString = fs.readFile("./samples/src/fact.js");
+	
+	var topLevelNode = parser.parse(codeString);
+	
+	var code = generator.generateTestCodeAST(topLevelNode);
+	
+	l(code);
+};
 
 
 exports.run = function() {
 	testGeneratorExists();
+	test_generatorCompletion();
 };
 
